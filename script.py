@@ -14,5 +14,7 @@ for item in [w for w in Path('text.txt').read_text(encoding="utf-8").replace("\n
             ftp.retrbinary(f'RETR {item}.jpg', file.write)
             print(item)
     except Exception:
+        with open('arts.txt', 'a') as f:
+            f.write(f'{item}\n')
         continue
 ftp.quit()
